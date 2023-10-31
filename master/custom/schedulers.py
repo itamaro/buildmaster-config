@@ -24,6 +24,8 @@ class GitHubPrScheduler(AnyBranchScheduler):
 
         builder_filter = chdict["properties"].get("builderfilter", None)
         event = chdict["properties"].get("event", None)
+        if event:
+            event, _ = event
         builder_names = kwargs.get("builderNames", self.builderNames)
         log.msg(f"Builder filter: {builder_filter}, event: {event}, builder names: {builder_names}")
         if builder_filter and builder_names:
